@@ -1,0 +1,39 @@
+variables:
+  majorVersion: '1.0'
+  minorVersion: $[counter('minorVersion')]
+  version: '$(majorVersion).$(minorVersion)'
+  buildName: '$(Build.SourceBranchName).$(version)'
+
+trigger:
+  branches:
+    include:
+    - master
+
+pr:
+- master
+
+jobs:
+- job:
+  displayName: Setup
+  pool:
+    vmImage: 'Ubuntu-18.04'
+  steps:
+  - powershell: Write-Host "##vso[build.updatebuildnumber]$($env:VERSION)"
+    displayName: Set Build Name
+
+- job:
+  displayName: Build mediawiki
+  pool:
+    vmImage: 'Ubuntu-18.04'
+  steps:
+  - task: Docker@2
+    displayName: Build image
+    inputs:
+      containerRegistry: 'dockerhub'
+      repository: servarr/mediawiki
+      command: buildAndPush
+      Dockerfile: build/Dockerfile
+      tags: |
+        latest
+        $(Build.SourceBranchName)
+        $(version)
