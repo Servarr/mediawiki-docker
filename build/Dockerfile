@@ -28,5 +28,7 @@ RUN git clone --depth 1 \
 
 
 RUN git clone --depth 1 -b master \
-      https://invent.kde.org/websites/aether-mediawiki.git \
-      /var/www/html/skins/aether
+        https://github.com/Servarr/aether-mediawiki.git \
+        /var/www/html/skins/aether && \
+        cd /var/www/html/skins/aether && \
+        composer install
