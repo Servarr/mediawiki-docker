@@ -10,11 +10,11 @@ RUN curl -L https://getcomposer.org/installer | php \
         chmod a+x composer.phar && \
         mv composer.phar /usr/bin/composer
 
-RUN git clone --depth 1 -b $MEDIAWIKI_BRANCH \
+RUN git clone --depth 1 \
         https://gerrit.wikimedia.org/r/p/mediawiki/extensions/TemplateData \
         /var/www/html/extensions/TemplateData
 
-RUN git clone --depth 1 -b $MEDIAWIKI_BRANCH \
+RUN git clone --depth 1 \
         https://gerrit.wikimedia.org/r/p/mediawiki/extensions/TemplateWizard \
         /var/www/html/extensions/TemplateWizard
 
