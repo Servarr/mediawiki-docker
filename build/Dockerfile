@@ -36,7 +36,8 @@ RUN git clone --depth 1 \
 
 RUN cd /var/www/html && \
         COMPOSER=composer.local.json composer require --no-update jeroen/mediawiki-github "~1.4" && \
-        composer update jeroen/megdiawiki-github --no-dev -o
+        composer update jeroen/megdiawiki-github --no-dev -o && \
+        chmod 777 /var/www/html/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer
 
 RUN git clone --depth 1 -b master \
         https://github.com/Servarr/aether-mediawiki.git \
