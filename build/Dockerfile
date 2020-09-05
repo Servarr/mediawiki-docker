@@ -26,6 +26,13 @@ RUN git clone --depth 1 \
         cd vendors/oauth2-client && \
         composer install
 
+RUN git clone --depth 1 \
+        https://github.com/ciencia/mediawiki-extensions-SaneCase.git \
+        /var/www/html/extensions/SaneCase
+
+RUN cd /var/www/html && \
+        COMPOSER=composer.local.json composer require --no-update jeroen/mediawiki-github "~1.4" && \
+        composer update jeroen/megdiawiki-github --no-dev -o
 
 RUN git clone --depth 1 -b master \
         https://github.com/Servarr/aether-mediawiki.git \
