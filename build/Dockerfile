@@ -18,6 +18,10 @@ RUN git clone --depth 1 -b REL1_34 \
         https://gerrit.wikimedia.org/r/p/mediawiki/extensions/TemplateWizard \
         /var/www/html/extensions/TemplateWizard
 
+RUN git clone --depth 1 -b REL1_34 \
+        https://gerrit.wikimedia.org/r/mediawiki/extensions/LabeledSectionTransclusion.git \ 
+        /var/www/html/extensions/LabeledSectionTransclusion
+
 RUN git clone --depth 1 \
         https://github.com/Schine/MW-OAuth2Client.git \
         /var/www/html/extensions/MW-OAuth2Client && \
