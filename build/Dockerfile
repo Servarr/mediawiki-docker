@@ -1,4 +1,4 @@
-FROM mediawiki:latest
+FROM mediawiki:1.35
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         unzip \
@@ -12,15 +12,11 @@ RUN curl -Ls https://getcomposer.org/installer -o installer && \
         mv composer.phar /usr/bin/composer && \
         rm installer
 
-RUN git clone --depth 1 -b REL1_34 \
-        https://gerrit.wikimedia.org/r/p/mediawiki/extensions/TemplateData \
-        /var/www/html/extensions/TemplateData
-
-RUN git clone --depth 1 -b REL1_34 \
+RUN git clone --depth 1 -b REL1_35 \
         https://gerrit.wikimedia.org/r/p/mediawiki/extensions/TemplateWizard \
         /var/www/html/extensions/TemplateWizard
 
-RUN git clone --depth 1 -b REL1_34 \
+RUN git clone --depth 1 -b REL1_35 \
         https://gerrit.wikimedia.org/r/mediawiki/extensions/LabeledSectionTransclusion.git \ 
         /var/www/html/extensions/LabeledSectionTransclusion
 
