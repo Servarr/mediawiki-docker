@@ -5,10 +5,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /var/cache/apt/archives/* \s
 
-RUN curl -L https://getcomposer.org/installer | php \
-        && php composer.phar install --no-dev && \
+RUN curl -Ls https://getcomposer.org/installer -o installer && \
+        php installer --1 && \
+        php composer.phar install --no-dev && \
         chmod a+x composer.phar && \
-        mv composer.phar /usr/bin/composer
+        mv composer.phar /usr/bin/composer && \
+        rm installer
 
 RUN git clone --depth 1 -b REL1_34 \
         https://gerrit.wikimedia.org/r/p/mediawiki/extensions/TemplateData \
