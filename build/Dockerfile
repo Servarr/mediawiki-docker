@@ -20,6 +20,18 @@ RUN git clone --depth 1 -b REL1_35 \
         https://gerrit.wikimedia.org/r/mediawiki/extensions/LabeledSectionTransclusion.git \ 
         /var/www/html/extensions/LabeledSectionTransclusion
 
+RUN git clone --depth 1 -b REL1_35 \
+        https://gerrit.wikimedia.org/r/mediawiki/extensions/DismissableSiteNotice \
+        /var/www/html/extensions/DismissableSiteNotice
+
+RUN git clone --depth 1 -b REL1_35 \
+        https://gerrit.wikimedia.org/r/mediawiki/extensions/PageNotice \
+        /var/www/html/extensions/PageNotice
+
+RUN git clone --depth 1 \
+        https://github.com/Telshin/Spoilers.git \
+        /var/www/html/extensions/Spoilers
+
 RUN git clone --depth 1 \
         https://github.com/Schine/MW-OAuth2Client.git \
         /var/www/html/extensions/MW-OAuth2Client && \
