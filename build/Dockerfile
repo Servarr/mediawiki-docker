@@ -54,3 +54,5 @@ RUN git clone --depth 1 -b master \
         /var/www/html/skins/aether && \
         cd /var/www/html/skins/aether && \
         composer install
+
+COPY ./block-files.conf /etc/apache2/conf-enabled
